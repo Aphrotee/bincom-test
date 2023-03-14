@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            LGA Results | {{ lga_results.get('lga') }}
+        </title>
+    </head>
+    <body>
+        <h1>
+                {{ lga_results.get('lga') }}
+        </h1>
+        <ul>
+            {% for party_name, score in lga_results.get('results').items() %}
+                <li>{{ party_name }} - {{ score }}</li>
+            {% endfor %}
+        </ul>
+        <h2>Other LGAs</h2>
+        {% for lga_endpoint in lga_endpoints %}
+            <h4>
+                <a href="{{ lga_endpoint.get('endpoint')}}">
+                    {{ lga_endpoint.get('name') }}
+                </a>
+            </h4>
+        {% endfor %}
+    </body>
+</html>

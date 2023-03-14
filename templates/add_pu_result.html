@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            New | Polling Units
+        </title>
+    </head>
+    <body>
+        <h3>
+            Add new polling unit result
+        </h3>
+        <form action="http://127.0.0.1:5000/results/pollingunits/add" method="get">
+            <div>Polling unit name: <input type="text", name="polling_unit_name" required></div>
+            <div>Polling unit number: <input type="text", name="polling_unit_number" required></div>
+            <div>Polling unit id: <input type="number", name="polling_unit_id" required></div>
+            <div>Username: <input type="text", name="username" required></div>
+            {% for party in parties %}
+                <div>{{ party.partyname }} votes: <input type="number", name="{{ party.partyname }}" required></div>
+            {% endfor %}
+            <div><label for="ward">Choose a ward: </label></div>
+            <select id="ward" name="ward">
+                {% for ward in wards %}
+                    <div><option value="{{ ward.uniqueid }}">{{ ward.ward_name }}</option></div>
+                {% endfor %}
+            </select>
+            <div>Latitude: <input type="text", name="lat" required></div>
+            <div>Longitude: <input type="text", name="long" required></div>
+            <div><input type="submit", value="Submit"></div>
+        </form>
+    </body>
+</html>

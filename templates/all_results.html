@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {{ title }}
+        </title>
+    </head>
+    <body>
+        {% for polling_unit, parties_result in votes.items() %}
+            <h1>
+                {{ polling_unit }}
+            </h1>
+            <ul>
+                {% for party_result in parties_result %}
+                    <li>{{ party_result.party_abbreviation }} - {{ party_result.party_score }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </body>
+</html>
